@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Surprise</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffe4e1; /* Light pink background */
+            text-align: center;
+        }
+        .message {
+            display: none;
+            font-size: 24px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="message1" class="message">Good morning! I hope you have a wonderful day ahead.</div>
+<div id="message2" class="message">Did you know that I love spending time with you?</div>
+<div id="message3" class="message">Here's a little surprise for your afternoon delight!</div>
+<div id="message4" class="message">Good evening, my love. You've made this day truly special.</div>
+
+<script>
+    function showMessages() {
+        const now = new Date();
+        const timezoneOffset = 60; // Amsterdam is UTC+1, adjust for daylight saving time if necessary
+
+        const localHour = now.getUTCHours() + timezoneOffset;
+
+        if (localHour >= 7 && localHour < 10) {
+            document.getElementById('message1').style.display = 'block';
+        } else if (localHour >= 10 && localHour < 15) {
+            document.getElementById('message1').style.display = 'block';
+            document.getElementById('message2').style.display = 'block';
+        } else if (localHour >= 15 && localHour < 19) {
+            document.getElementById('message1').style.display = 'block';
+            document.getElementById('message2').style.display = 'block';
+            document.getElementById('message3').style.display = 'block';
+        } else if (localHour >= 19) {
+            document.getElementById('message1').style.display = 'block';
+            document.getElementById('message2').style.display = 'block';
+            document.getElementById('message3').style.display = 'block';
+            document.getElementById('message4').style.display = 'block';
+        }
+    }
+
+    // Check every minute
+    setInterval(showMessages, 60000);
+    showMessages(); // Initial check on page load
+</script>
+
+</body>
+</html>
