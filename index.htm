@@ -1,75 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Valentine's Day Surprise</title>
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      background-color: #ffebee;
-      color: #d32f2f;
-      text-align: center;
-      padding: 50px;
-    }
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-    }
-    p {
-      font-size: 2rem;
-      margin-top: 20px;
-    }
-    .hidden {
-      display: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffebf0;
+            color: #d63384;
+            padding: 20px;
+        }
+        .message {
+            display: none;
+            font-size: 24px;
+            margin-top: 50px;
+        }
+    </style>
+    <script>
+        function checkMessageTime() {
+            const now = new Date();
+            const amsOffset = 60; // Amsterdam timezone offset in minutes
+            now.setMinutes(now.getMinutes() + now.getTimezoneOffset() + amsOffset);
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            
+            if (hours >= 7) document.getElementById('msg1').style.display = 'block';
+            if (hours >= 10) document.getElementById('msg2').style.display = 'block';
+            if (hours >= 15) document.getElementById('msg3').style.display = 'block';
+            if (hours >= 23 && minutes >= 45) document.getElementById('msg4').style.display = 'block';
+        }
+
+        window.onload = checkMessageTime;
+    </script>
 </head>
 <body>
-  <h1>💖 Happy Valentine's Day, My Love! 💖</h1>
-  <p id="message">Check back later for your next surprise!</p>
-
-  <script>
-    // Function to get the current time in Amsterdam timezone
-    function getCurrentTimeInAmsterdam() {
-      const now = new Date();
-      const amsterdamTime = now.toLocaleString("en-US", { timeZone: "Europe/Amsterdam" });
-      return new Date(amsterdamTime);
-    }
-
-    // Function to display the appropriate message based on the time
-    function showMessage() {
-      const currentTime = getCurrentTimeInAmsterdam();
-      const hours = currentTime.getHours();
-      const minutes = currentTime.getMinutes();
-
-      const messageElement = document.getElementById("message");
-
-      // Define the messages and their corresponding times
-      const messages = [
-        { time: "07:00", text: "Good morning, my love! 🌞 You are the first thing on my mind today." },
-        { time: "10:00", text: "Thinking of you always makes my day brighter. 💕" },
-        { time: "15:00", text: "You are my sunshine, even in the afternoon. ☀️" },
-        { time: "23:45", text: "Goodnight, my love. Sweet dreams! 🌙💤" }
-      ];
-
-      // Check the current time and display the corresponding message
-      let messageToShow = "Check back later for your next surprise!";
-      for (const message of messages) {
-        const [messageHours, messageMinutes] = message.time.split(":").map(Number);
-        if (hours === messageHours && minutes >= messageMinutes) {
-          messageToShow = message.text;
-        }
-      }
-
-      messageElement.textContent = messageToShow;
-    }
-
-    // Update the message every minute
-    setInterval(showMessage, 60000);
-
-    // Show the initial message when the page loads
-    showMessage();
-  </script>
+    <h1>Happy Valentine's Day! 💖</h1>
+    <div id="msg1" class="message">Message 1: Good morning, my love! ☀️</div>
+    <div id="msg2" class="message">Message 2: Hope you're having a wonderful day! 🌸</div>
+    <div id="msg3" class="message">Message 3: Thinking of you always! ❤️</div>
+    <div id="msg4" class="message">Message 4: Sweet dreams, my love! 🌙</div>
 </body>
 </html>
